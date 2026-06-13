@@ -47,7 +47,16 @@ function getTransactionId(item) {
 }
 
 function getPaymentStatus(item) {
-  return item.paymentStatus || "--";
+  const rawStatus =
+    item.paymentStatus ??
+    item.payment_status ??
+    item.payment?.status ??
+    item.paymentDetails?.status;
+
+  if (!rawStatus) return "--";
+
+  const normalized = String(rawStatus).trim();
+  return normalized.charAt(0).toUpperCase() + normalized.slice(1).toLowerCase();
 }
 
 export default function Table({ data }) {

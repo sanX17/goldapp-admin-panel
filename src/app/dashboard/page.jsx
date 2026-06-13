@@ -18,27 +18,6 @@ const metricConfig = [
     format: (stats) => stats.total,
   },
   {
-    key: "pending",
-    label: "Pending Requests",
-    helper: "Current status",
-    accent: "amber",
-    format: (stats) => stats.pending,
-  },
-  {
-    key: "pendingAmount",
-    label: "Pending Amount",
-    helper: "Live data",
-    accent: "amber",
-    format: (stats) => formatCurrency(stats.pendingAmount),
-  },
-  {
-    key: "paid",
-    label: "Paid Requests",
-    helper: "System generated",
-    accent: "emerald",
-    format: (stats) => stats.paid,
-  },
-  {
     key: "paidAmount",
     label: "Paid Amount",
     helper: "Updated just now",
@@ -51,6 +30,27 @@ const metricConfig = [
     helper: "Live data",
     accent: "blue",
     format: (stats) => formatCurrency(stats.totalAmount),
+  },
+  {
+    key: "pending",
+    label: "Pending Sync Status",
+    helper: "Current status",
+    accent: "amber",
+    format: (stats) => stats.pending,
+  },
+  {
+    key: "completedSync",
+    label: "Completed Sync",
+    helper: "Not pending state",
+    accent: "emerald",
+    format: (stats) => stats.completedSync,
+  },
+  {
+    key: "paid",
+    label: "Paid Requests",
+    helper: "System generated",
+    accent: "emerald",
+    format: (stats) => stats.paid,
   },
 ];
 

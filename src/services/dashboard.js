@@ -7,6 +7,31 @@ getDocs
 
 import { db } from "../lib/firebase";
 
+function getPaymentStatusValue(item) {
+ const rawStatus =
+ item.paymentStatus ??
+ item.payment_status ??
+ item.payment?.status ??
+ item.paymentDetails?.status ??
+ item.status;
+
+ const normalized =
+ String(rawStatus ?? "").trim().toUpperCase();
+
+ if (
+ normalized === "SUCCESS" ||
+ normalized === "SUCCESSFUL"
+ ) {
+  return "PAID";
+ }
+
+ return normalized;
+}
+
+function getSyncStatusValue(item) {
+ return String(item.status ?? "").trim().toUpperCase();
+}
+
 export const getDashboardStats =
 async ()=>{
 
@@ -31,13 +56,25 @@ data.filter(
 
 (item)=>
 
-String(
-item.status
-).trim()
-
+getSyncStatusValue(item)
 ===
-
 "PENDING"
+
+).length;
+
+const completedSync =
+
+data.filter(
+
+(item)=>{
+
+const syncStatus =
+getSyncStatusValue(item);
+
+return (
+ syncStatus !== "PENDING"
+);
+}
 
 ).length;
 
@@ -47,12 +84,8 @@ data.filter(
 
 (item)=>
 
-String(
-item.status
-).trim()
-
+getPaymentStatusValue(item)
 ===
-
 "PAID"
 
 ).length;
@@ -77,12 +110,8 @@ data.filter(
 
 (item)=>
 
-String(
-item.status
-).trim()
-
+getPaymentStatusValue(item)
 ===
-
 "PENDING"
 
 ).reduce(
@@ -103,12 +132,8 @@ data.filter(
 
 (item)=>
 
-String(
-item.status
-).trim()
-
+getPaymentStatusValue(item)
 ===
-
 "PAID"
 
 ).reduce(
@@ -126,6 +151,7 @@ sum +
 return {
 
 pending,
+completedSync,
 paid,
 totalAmount,
 pendingAmount,

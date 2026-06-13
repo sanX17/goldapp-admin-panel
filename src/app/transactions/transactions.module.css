@@ -1,7 +1,25 @@
 .page {
   background: #f8fafc;
-  min-height: 100%;
+  height: calc(100vh - 96px);
+  min-height: 0;
   padding: 8px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.stickyPanel {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #f8fafc;
+  padding-bottom: 12px;
+}
+
+.tableArea {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .refreshButton {
@@ -32,7 +50,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .statCard {
@@ -62,7 +80,6 @@
   flex-direction: column;
   gap: 16px;
   align-items: stretch;
-  margin-bottom: 24px;
   border: 1px solid #e2e8f0;
   border-radius: 22px;
   background: #ffffff;
@@ -85,6 +102,61 @@
   gap: 12px;
 }
 
+.filterControls {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 16px;
+}
+
+.dateFilters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px;
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dateLabel {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dateInput {
+  min-width: 160px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 14px;
+  padding: 11px 14px;
+}
+
+.clearDatesButton {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 14px;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+
+.clearDatesButton:hover {
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
 @media (max-width: 1099px) {
   .statsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -93,11 +165,23 @@
 
 @media (max-width: 767px) {
   .page {
+    height: auto;
+    min-height: 100%;
     padding: 8px 20px 20px;
+    overflow: visible;
   }
 
   .statsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .stickyPanel {
+    position: static;
+    padding-bottom: 0;
+  }
+
+  .tableArea {
+    overflow: visible;
   }
 
   .toolbar {
@@ -106,5 +190,19 @@
 
   .filterRow {
     align-items: stretch;
+  }
+
+  .filterControls {
+    align-items: stretch;
+  }
+
+  .dateFilters {
+    width: 100%;
+  }
+
+  .dateField,
+  .dateInput,
+  .clearDatesButton {
+    width: 100%;
   }
 }

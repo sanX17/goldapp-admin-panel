@@ -9,7 +9,7 @@ export default function SearchBar({ search, setSearch }) {
       <div className={styles.row}>
         <input
           id="transaction-search"
-          placeholder="Search by name or phone"
+          placeholder="Search by name, phone, member ID, or transaction ID"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className={styles.input}

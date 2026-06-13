@@ -7,6 +7,17 @@ import Table from "../../components/TransactionTable";
 import { listenTransactions } from "../../services/transactions";
 import styles from "./transactions.module.css";
 
+function getTransactionTime(item) {
+  const value = item.createdAt ?? item.timestamp ?? item.requestedAt;
+
+  if (!value) return 0;
+  if (typeof value === "number") return value;
+  if (value?.toDate) return value.toDate().getTime();
+
+  const parsed = new Date(value).getTime();
+  return Number.isNaN(parsed) ? 0 : parsed;
+}
+
 export default function Page() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
@@ -19,7 +30,11 @@ export default function Page() {
     return () => unsub();
   }, [filter, refreshKey]);
 
-  const filtered = data.filter(
+  const sortedData = [...data].sort(
+    (a, b) => getTransactionTime(b) - getTransactionTime(a)
+  );
+
+  const filtered = sortedData.filter(
     (item) =>
       item.userPhone?.includes(search) ||
       item.userName?.toLowerCase().includes(search.toLowerCase())

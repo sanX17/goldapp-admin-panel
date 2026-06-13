@@ -84,7 +84,7 @@ export default function Table({ data }) {
         <p className={styles.headerCell}>Transaction ID</p>
         <p className={styles.headerCell}>Payment Status</p>
         <p className={styles.headerCell}>Amount</p>
-        <p className={styles.headerCell}>Status</p>
+        <p className={styles.headerCell}>Sync Status</p>
         <p className={styles.headerCell}>Date</p>
       </div>
 
@@ -138,7 +138,7 @@ export default function Table({ data }) {
                 <p className={styles.fieldValue}>{formatCurrency(item.totalAmount)}</p>
               </div>
               <div>
-                <p className={styles.fieldLabel}>Status</p>
+                <p className={styles.fieldLabel}>Sync Status</p>
                 <p className={`${styles.fieldValue} ${item.status === "PAID" ? styles.statusPaid : styles.statusPending}`}>
                   {item.status}
                 </p>

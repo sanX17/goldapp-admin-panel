@@ -56,3 +56,5 @@ For production on Vercel:
 ## Important Note
 
 The `NEXT_PUBLIC_*` values are exposed to the browser by design in Next.js. Admin authentication now relies on a server-side Firebase Admin check plus an `httpOnly` session cookie signed with `ADMIN_SESSION_SECRET`.
+
+all set 

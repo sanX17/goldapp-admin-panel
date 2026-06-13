@@ -1,0 +1,167 @@
+.page {
+  background: #f8fafc;
+  min-height: 100%;
+  padding: 8px 32px 32px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.actionLink {
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.actionLink:hover {
+  text-decoration: underline;
+}
+
+.error {
+  margin-bottom: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #64748b;
+  padding: 16px 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  padding: 20px;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+}
+
+.top {
+  width: 44px;
+  border-top: 3px solid currentColor;
+  padding-top: 14px;
+}
+
+.label {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.value {
+  margin: 20px 0 0;
+  color: #0f172a;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.helper {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.slate {
+  color: #0f172a;
+}
+
+.slate:hover {
+  border-color: #cbd5e1;
+}
+
+.amber {
+  color: #f59e0b;
+}
+
+.amber:hover {
+  border-color: #f59e0b;
+}
+
+.emerald {
+  color: #10b981;
+}
+
+.emerald:hover {
+  border-color: #10b981;
+}
+
+.blue {
+  color: #2563eb;
+}
+
+.blue:hover {
+  border-color: #2563eb;
+}
+
+.loadingValue {
+  color: #0f172a;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding: 8px 20px 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .value {
+    font-size: 32px;
+  }
+}
